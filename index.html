@@ -1,310 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="An RTK-SLAM Dataset for Absolute Accuracy Evaluation in GNSS-Degraded Environments">
+  <meta name="keywords" content="RTK-SLAM, SLAM, Dataset, GNSS, LiDAR, Geodetic, Absolute Accuracy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
+  <title>RTK-SLAM Dataset</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
   <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <style>
+    .tag-badge {
+      display: inline-block;
+      background: #f0f0f0;
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin: 2px;
+      font-size: 0.85em;
+      color: #444;
+    }
+    .dataset-stat {
+      text-align: center;
+      padding: 12px;
+    }
+    .dataset-stat .stat-number {
+      font-size: 2em;
+      font-weight: 700;
+      color: #3273dc;
+    }
+    .dataset-stat .stat-label {
+      font-size: 0.9em;
+      color: #666;
+    }
+    .scene-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .highlight-box {
+      background: #f5f9ff;
+      border-left: 4px solid #3273dc;
+      padding: 12px 16px;
+      margin: 10px 0;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
 </head>
 <body>
 
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-  </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://willyzw.github.io/">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+        </a>
 
-  <main id="main-content">
-  <section class="hero">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://bamf-slam.github.io/">
+              BAMF-SLAM - ICRA 2023
+            </a>
+            <a class="navbar-item" href="https://is-near.github.io/">
+              IS-NEAR - 3DV 2024
+            </a>
+            <a class="navbar-item" href="https://hi-slam.github.io/">
+              HI-SLAM - RA-L 2024
+            </a>
+            <a class="navbar-item" href="https://hi-slam2.github.io/">
+              HI-SLAM2 - T-RO 2025
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero" style="margin-top: -30px">
     <div class="hero-body">
       <div class="container is-max-desktop">
-        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-2 publication-title">
+              An RTK-SLAM Dataset for Absolute Accuracy Evaluation in GNSS-Degraded Environments
+            </h1>
+            <h2 class="title is-4">ISPRS Congress 2026</h2>
+
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
+              <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+                <a href="https://willyzw.github.io/" target="_blank">Wei Zhang</a>,</span>&nbsp;
+              <span class="author-block">
+                <a href="https://www.ifp.uni-stuttgart.de/institut/team/Ress/" target="_blank">Vincent Ress</a>,</span>&nbsp;
+              <span class="author-block">
+                <a href="https://www.ifp.uni-stuttgart.de/en/institute/team/Skuddis/" target="_blank">David Skuddis</a>,</span>&nbsp;
+              <span class="author-block">
+                <a href="https://www.ifp.uni-stuttgart.de/en/institute/team/Soergel/" target="_blank">Uwe Soergel</a>,</span>&nbsp;
+              <span class="author-block">
+                <a href="https://www.ifp.uni-stuttgart.de/en/institute/team/Haala-00001/" target="_blank">Norbert Haala</a>
+              </span>
+            </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Institute for Photogrammetry and Geoinformatics, University of Stuttgart</span>
+            </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+            <div class="column has-text-centered">
+              <div class="publication-links">
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
+                <!-- Paper link (placeholder) -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  <a href="#" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                    <i class="ai ai-arxiv"></i>
+                    <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>Paper</span>
                 </a>
               </span>
+
+              <!-- ArXiv abstract Link (placeholder) -->
+              <!-- <span class="link-block">
+                <a href="#" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span> -->
+
+              <!-- Dataset download link -->
+              <span class="link-block">
+                <a href="#download" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-database"></i>
+                </span>
+                <span>Dataset</span>
+                </a>
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/Willyzw/rtk-slam-eval" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+              </span>
+
             </div>
           </div>
         </div>
@@ -314,182 +187,372 @@
 </section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
+<!-- Teaser -->
+<section class="hero teaser" style="margin-top: -30px; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
+      <img src="static/images/teaser.jpg" class="center" alt="Teaser figure showing sensor setup, control point distribution, and per-point absolute errors"/>
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        <strong>Top:</strong> Sensor setup (left) and checkpoints overlaid on the SLAM map of the Stadtgarten scene (right).
+        Orange: open-sky; Cyan: GNSS-obstructed.
+        <strong>Bottom:</strong> Absolute 3D error per checkpoint for Stadtgarten Seq.&nbsp;1 using FAST-LIO-SAM.
+        Standalone RTK errors grow to tens of meters in GNSS-degraded zones, while offline RTK-SLAM remains mostly below 10&nbsp;cm.
       </h2>
     </div>
   </div>
 </section>
-<!-- End teaser video -->
+<!-- End teaser -->
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
+
+<!-- Abstract -->
+<section class="section hero" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            RTK-SLAM systems integrate simultaneous localization and mapping (SLAM) with real-time kinematic (RTK) GNSS positioning, promising both relative consistency and globally referenced coordinates for efficient georeferenced surveying. A critical and underappreciated issue is that the standard evaluation metric, Absolute Trajectory Error (ATE), first fits an optimal rigid-body transformation between the estimated trajectory and reference before computing errors. This so-called SE(3) alignment absorbs global drift and systematic errors, making trajectories appear more accurate than they are in practice, and is unsuitable for evaluating the global accuracy of RTK-SLAM. We present a geodetically referenced dataset and evaluation methodology that expose this gap. A key design principle is that the RTK receiver is used solely as a <em>system input</em>, while ground truth is established independently via a geodetic total station — a separation absent from all existing benchmarks. The dataset covers two outdoor-to-indoor scenes with synchronized LiDAR, camera, IMU, and RTK inputs. We evaluate LiDAR-inertial, visual-inertial, and LiDAR-visual-inertial RTK-SLAM systems alongside standalone RTK, reporting direct global accuracy and SE(3)-aligned relative accuracy to make the gap explicit. Results show that SE(3) alignment can underestimate absolute positioning error by up to 76%. RTK-SLAM achieves centimeter-level absolute accuracy in open-sky conditions and maintains decimeter-level global accuracy indoors, where standalone RTK degrades to tens of meters.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
+<!-- End abstract -->
 
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- Key Insight -->
+<section class="section" style="margin-top: 0; padding-top: 20px; margin-bottom: 0; padding-bottom: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Key Insight</h2>
+        <div class="content has-text-justified">
+          <div class="highlight-box">
+            <p>
+              <strong>The standard SE(3)-aligned ATE is unsuitable for evaluating RTK-SLAM.</strong>
+              A trajectory that is meters away from its true global position can still yield a near-zero SE(3)-aligned ATE if its internal geometry is consistent.
+              Our evaluation protocol directly compares estimated positions against geodetically surveyed control points — without any alignment — exposing global drift that standard benchmarks would hide.
+              The alignment gap can reach <strong>76%</strong>, meaning standard metrics can underestimate the true absolute error by up to a factor of 4.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
+<!-- Dataset -->
+<section class="section" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <hr>
+        <h2 class="title is-3">Dataset</h2>
+
+        <!-- Sensor platform -->
+        <h3 class="title is-4" style="text-align:left;">Sensor Platform</h3>
+        <div class="columns is-centered is-vcentered">
+          <div class="column is-one-third has-text-centered">
+            <img src="static/images/scanner.jpg" alt="Sensor platform" style="max-height:320px;"/>
+          </div>
+          <div class="column is-two-thirds">
+            <div class="content has-text-justified">
+              <p>The handheld RTK-SLAM device integrates:</p>
+              <ul>
+                <li><strong>Livox MID360 LiDAR</strong> with integrated IMU — 360° horizontal, 59° vertical FOV, 10 Hz, non-repetitive scan pattern</li>
+                <li><strong>2 MP global shutter camera</strong> — hardware-triggered at ~10 Hz</li>
+                <li><strong>UM980 GNSS receiver</strong> — RTK corrections provided by the German SAPOS service, centimeter-level accuracy under open-sky</li>
+              </ul>
+              <p>
+                The LiDAR and its built-in IMU are hardware-synchronized to GNSS time via a 1&nbsp;PPS signal. All extrinsics are carefully calibrated; the GNSS antenna phase center and device base center are referenced via CAD model offsets, enabling direct comparison of estimated positions against surveyed control points.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
+
+        <!-- Stats -->
+        <br>
+        <div class="columns is-centered">
+          <div class="column dataset-stat">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Sequences</div>
+          </div>
+          <div class="column dataset-stat">
+            <div class="stat-number">87</div>
+            <div class="stat-label">Control Points</div>
+          </div>
+          <div class="column dataset-stat">
+            <div class="stat-number">&lt;1 cm</div>
+            <div class="stat-label">Ground Truth Accuracy</div>
+          </div>
+          <div class="column dataset-stat">
+            <div class="stat-number">3.6 km</div>
+            <div class="stat-label">Total Path Length</div>
+          </div>
+          <div class="column dataset-stat">
+            <div class="stat-number">~60 min</div>
+            <div class="stat-label">Total Duration</div>
+          </div>
         </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+
+        <br>
+
+        <!-- Scenes -->
+        <h3 class="title is-4" style="text-align:left;">Scenes</h3>
+        <div class="columns is-centered">
+          <!-- Stadtgarten -->
+          <div class="column">
+            <div class="scene-card">
+              <div class="columns is-gapless">
+                <div class="column is-half">
+                  <img src="static/images/stadtgarten1.jpg" alt="Stadtgarten near building" style="width:100%;height:180px;object-fit:cover;"/>
+                </div>
+                <div class="column is-half">
+                  <img src="static/images/stadtgarten2.jpg" alt="Stadtgarten underpass" style="width:100%;height:180px;object-fit:cover;"/>
+                </div>
+              </div>
+              <div class="content" style="padding:12px;">
+                <h4 class="title is-5" style="margin-bottom:6px;">Stadtgarten</h4>
+                <p style="font-size:0.9em;">Public park in Stuttgart. Two sequences covering 1.92&nbsp;km and 0.95&nbsp;km. Three distinct GNSS zones: open sky, partial obstruction (buildings/trees), and a fully GNSS-denied 30&nbsp;m underpass tunnel. 55 control points total.
+                  <br><span class="tag-badge">Outdoor</span><span class="tag-badge">GNSS-degraded</span><span class="tag-badge">GNSS-denied</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Construction Hall -->
+          <div class="column">
+            <div class="scene-card">
+              <div class="columns is-gapless">
+                <div class="column is-half">
+                  <img src="static/images/construction1.jpg" alt="Construction Hall entrance" style="width:100%;height:180px;object-fit:cover;"/>
+                </div>
+                <div class="column is-half">
+                  <img src="static/images/construction2.jpg" alt="Construction Hall indoor" style="width:100%;height:180px;object-fit:cover;"/>
+                </div>
+              </div>
+              <div class="content" style="padding:12px;">
+                <h4 class="title is-5" style="margin-bottom:6px;">Construction Hall</h4>
+                <p style="font-size:0.9em;">IntCDC construction site, University of Stuttgart. Two sequences (clockwise &amp; counter-clockwise) covering 0.42&nbsp;km and 0.32&nbsp;km. Each sequence begins and ends outdoors with RTK fix and traverses the interior where GNSS signals are severely degraded (&gt;400&nbsp;s, ~150&nbsp;m). 32 control points total.
+                  <br><span class="tag-badge">Outdoor-to-indoor</span><span class="tag-badge">GNSS-severely degraded</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <!-- Ground Truth -->
+        <h3 class="title is-4" style="text-align:left;">Geodetic Ground Truth</h3>
+        <div class="content has-text-justified">
+          <p>
+            Ground truth is established via a two-stage procedure entirely independent of the RTK receiver used as system input.
+            First, open-sky anchor points are surveyed by static GNSS observations (&lt;5&nbsp;mm std).
+            A Leica TS16 total station is oriented to these anchors and measures all remaining control points, including those under GNSS obstruction and inside GNSS-denied areas, propagating the global reference frame via a traverse.
+            The final ground truth accuracy is better than <strong>1&nbsp;cm</strong> for all control points.
+          </p>
+          <p>
+            <strong>Critical design principle:</strong> the RTK receiver is exclusively a <em>system input</em>. Ground truth is established by the total station independently. This separation — absent from all existing benchmarks — is what enables meaningful evaluation of absolute global accuracy.
+          </p>
         </div>
       </div>
     </div>
+    <hr>
   </div>
 </section>
-<!-- End video carousel -->
 
 
+<!-- Evaluation -->
+<section class="section" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <h2 class="title is-3">Evaluation</h2>
 
+        <h3 class="title is-4" style="text-align:left;">Methods</h3>
+        <div class="content has-text-justified">
+          <p>We benchmark three RTK-SLAM configurations:</p>
+          <ul>
+            <li><strong>FAST-LIO-SAM</strong> — LiDAR-inertial-GNSS system combining FAST-LIO2 front-end with factor graph backend. Both online and offline (batch pose graph optimization) results reported.</li>
+            <li><strong>OKVIS2-X(vig)</strong> — Keyframe-based visual-inertial-GNSS system with tight GNSS integration via 4-DoF frame alignment.</li>
+            <li><strong>OKVIS2-X(lvig)</strong> — Same system extended with LiDAR (LiDAR-visual-inertial-GNSS). Compared against the vig configuration to quantify LiDAR's contribution.</li>
+            <li><strong>Standalone RTK</strong> — Direct RTK positioning without any odometry integration.</li>
+          </ul>
+        </div>
 
+        <h3 class="title is-4" style="text-align:left;">Trajectory Comparisons</h3>
+        <div class="content has-text-justified">
+          <p>
+            Trajectories for all four sequences overlaid on satellite imagery, with GNSS-denied and GNSS-degraded zones annotated.
+          </p>
+        </div>
+        <img src="static/images/traj_all.jpg" class="center" alt="Trajectory comparisons for all four sequences" style="width:100%;"/>
+        <p class="has-text-centered" style="font-size:0.85em; color:#666; margin-top:6px;">
+          FAST-LIO-SAM offline (dark blue), online (light blue); OKVIS2-X(lvig) offline (dark green), online (light green); RTK standalone (red). Yellow stars: geodetic control points.
+        </p>
+        <br>
 
+        <h3 class="title is-4" style="text-align:left;">Drift Under GNSS Outage</h3>
+        <img src="static/images/rtk_correlation.jpg" class="center" alt="Drift rate as function of GNSS outage time and distance" style="max-width:700px;width:100%;"/>
+        <div class="content has-text-justified">
+          <br>
+          <p>
+            Positioning error (log scale) as a function of time elapsed and distance traveled to the nearest RTK fix, aggregated over all checkpoint measurements. Because offline optimization propagates corrections both forward and backward, the x-axis is distance to the nearest RTK fix rather than only since the last fix. LiDAR-aided methods show low drift rates:
+            <strong>9.2&nbsp;cm/min</strong> (0.25% of path) for FAST-LIO-SAM and <strong>8.0&nbsp;cm/min</strong> (0.22%) for OKVIS2-X(lvig).
+            Standalone RTK degrades rapidly once signal quality deteriorates.
+          </p>
+        </div>
 
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
+        <br>
 
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+        <h3 class="title is-4" style="text-align:left;">Quantitative Results</h3>
+        <div class="content has-text-justified">
+          <p>
+            Absolute ATE (no alignment) vs. SE(3)-aligned ATE. The <strong>Gap</strong> column shows how much the alignment hides. A gap of 76% means the standard metric underestimates the true absolute error by a factor of more than 4.
+          </p>
+        </div>
+
+        <!-- Results table -->
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth" style="font-size:0.88em;">
+            <thead>
+              <tr>
+                <th rowspan="2">Scene</th>
+                <th rowspan="2">Seq.</th>
+                <th colspan="4" class="has-text-centered">FAST-LIO-SAM</th>
+                <th colspan="4" class="has-text-centered">OKVIS2-X(vig)</th>
+                <th colspan="4" class="has-text-centered">OKVIS2-X(lvig)</th>
+                <th rowspan="2">RTK<br>[m]</th>
+              </tr>
+              <tr>
+                <th>Online [m]</th><th>Offline [m]</th><th>SE3 [m]</th><th>Gap [%]</th>
+                <th>Online [m]</th><th>Offline [m]</th><th>SE3 [m]</th><th>Gap [%]</th>
+                <th>Online [m]</th><th>Offline [m]</th><th>SE3 [m]</th><th>Gap [%]</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Stadtgarten</td><td>Seq. 1</td>
+                <td>0.162</td><td>0.068</td><td>0.065</td><td>4</td>
+                <td>3.276</td><td>0.189</td><td>0.185</td><td>2</td>
+                <td>4.103</td><td>0.068</td><td>0.060</td><td>12</td>
+                <td>13.98</td>
+              </tr>
+              <tr>
+                <td>Stadtgarten</td><td>Seq. 2</td>
+                <td>0.150</td><td>0.099</td><td>0.077</td><td>22</td>
+                <td>2.695</td><td>0.907</td><td>0.831</td><td>8</td>
+                <td>3.180</td><td>0.092</td><td>0.080</td><td>13</td>
+                <td>11.99</td>
+              </tr>
+              <tr>
+                <td>Constr. Hall</td><td>Seq. 1</td>
+                <td>0.256</td><td>0.248</td><td>0.220</td><td>11</td>
+                <td>1.437</td><td>0.788</td><td>0.579</td><td>27</td>
+                <td>0.761</td><td>0.321</td><td>0.227</td><td>29</td>
+                <td>12.01</td>
+              </tr>
+              <tr>
+                <td>Constr. Hall</td><td>Seq. 2</td>
+                <td>0.439</td><td>0.373</td><td>0.089</td><td><strong>76</strong></td>
+                <td>3.715</td><td>0.700</td><td>0.511</td><td>27</td>
+                <td>0.825</td><td>0.170</td><td>0.081</td><td><strong>52</strong></td>
+                <td>14.84</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
+    <hr>
+  </div>
 </section>
-<!--End BibTex citation -->
+
+
+<!-- Download -->
+<section class="section" id="download" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full_width">
+        <h2 class="title is-3">Download</h2>
+        <div class="content has-text-justified">
+          <p>
+            The dataset, calibration files, and evaluation scripts are publicly available.
+            Each sequence is provided as a ROS bag containing synchronized LiDAR, camera, IMU, and RTK data.
+            Calibration files, ground truth control point coordinates, and evaluation code are also provided.
+          </p>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <table class="table is-bordered is-fullwidth" style="font-size:0.9em;">
+              <thead>
+                <tr><th>Sequence</th><th>Duration</th><th>Length</th><th>Download</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Stadtgarten Seq. 1</td>
+                  <td>26 min 42 s</td>
+                  <td>1.92 km</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                </tr>
+                <tr>
+                  <td>Stadtgarten Seq. 2</td>
+                  <td>10 min 36 s</td>
+                  <td>0.95 km</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                </tr>
+                <tr>
+                  <td>Constr. Hall Seq. 1</td>
+                  <td>12 min 21 s</td>
+                  <td>0.42 km</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                </tr>
+                <tr>
+                  <td>Constr. Hall Seq. 2</td>
+                  <td>9 min 59 s</td>
+                  <td>0.32 km</td>
+                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="publication-links" style="margin-top:10px;">
+          <span class="link-block">
+            <a href="https://github.com/Willyzw/rtk-slam-eval" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>Evaluation Code</span>
+          </a>
+        </span>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{zhang2026rtkslam,
+  title={An RTK-SLAM Dataset for Absolute Accuracy Evaluation in GNSS-Degraded Environments},
+  author={Zhang, Wei and Ress, Vincent and Skuddis, David and Soergel, Uwe and Haala, Norbert},
+  journal={The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
 
 
   <footer class="footer">
@@ -497,24 +560,15 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
