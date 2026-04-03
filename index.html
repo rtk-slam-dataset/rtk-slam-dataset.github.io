@@ -290,11 +290,11 @@
             <div class="stat-label">Ground Truth Accuracy</div>
           </div>
           <div class="column dataset-stat">
-            <div class="stat-number">3.6 km</div>
+            <div class="stat-number">2.4 km</div>
             <div class="stat-label">Total Path Length</div>
           </div>
           <div class="column dataset-stat">
-            <div class="stat-number">~60 min</div>
+            <div class="stat-number">~64 min</div>
             <div class="stat-label">Total Duration</div>
           </div>
         </div>
@@ -317,7 +317,7 @@
               </div>
               <div class="content" style="padding:12px;">
                 <h4 class="title is-5" style="margin-bottom:6px;">Stadtgarten</h4>
-                <p style="font-size:0.9em;">Public park in Stuttgart. Two sequences covering 1.92&nbsp;km and 0.95&nbsp;km. Three distinct GNSS zones: open sky, partial obstruction (buildings/trees), and a fully GNSS-denied 30&nbsp;m underpass tunnel. 55 control points total.
+                <p style="font-size:0.9em;">Public park in Stuttgart. Two sequences covering 1.04&nbsp;km and 0.46&nbsp;km. Three distinct GNSS zones: open sky, partial obstruction (buildings/trees), and a fully GNSS-denied 30&nbsp;m underpass tunnel. 55 control points total.
                   <br><span class="tag-badge">Outdoor</span><span class="tag-badge">GNSS-degraded</span><span class="tag-badge">GNSS-denied</span>
                 </p>
               </div>
@@ -336,7 +336,7 @@
               </div>
               <div class="content" style="padding:12px;">
                 <h4 class="title is-5" style="margin-bottom:6px;">Construction Hall</h4>
-                <p style="font-size:0.9em;">IntCDC construction site, University of Stuttgart. Two sequences (clockwise &amp; counter-clockwise) covering 0.42&nbsp;km and 0.32&nbsp;km. Each sequence begins and ends outdoors with RTK fix and traverses the interior where GNSS signals are severely degraded (&gt;400&nbsp;s, ~150&nbsp;m). 32 control points total.
+                <p style="font-size:0.9em;">IntCDC construction site, University of Stuttgart. Two sequences (clockwise &amp; counter-clockwise) covering 0.48&nbsp;km and 0.39&nbsp;km. Each sequence begins and ends outdoors with RTK fix and traverses the interior where GNSS signals are severely degraded (&gt;400&nbsp;s, ~150&nbsp;m). 32 control points total.
                   <br><span class="tag-badge">Outdoor-to-indoor</span><span class="tag-badge">GNSS-severely degraded</span>
                 </p>
               </div>
@@ -487,36 +487,65 @@
           </p>
         </div>
 
+        <div class="content has-text-justified">
+          <p>All sequences are available in three formats: <strong>ROS1</strong> (.bag), <strong>ROS2</strong> (.db3), and <strong>EuRoC</strong> (extended format compatible with OKVIS2-X).</p>
+          <p><strong>Note on camera timestamps:</strong> The camera has a hardware trigger delay of −20.6&nbsp;ms relative to the IMU clock (estimated by Kalibr). This offset is already compensated in all released formats — camera timestamps reflect the corrected capture time and no additional time shift is needed.</p>
+        </div>
+
         <div class="columns is-centered">
-          <div class="column is-half">
+          <div class="column">
             <table class="table is-bordered is-fullwidth" style="font-size:0.9em;">
               <thead>
-                <tr><th>Sequence</th><th>Duration</th><th>Length</th><th>Download</th></tr>
+                <tr><th>Sequence</th><th>Duration</th><th>Length</th><th>RTK Fix</th><th>Ctrl. Pts</th><th>Download</th></tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Stadtgarten Seq. 1</td>
                   <td>26 min 42 s</td>
-                  <td>1.92 km</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                  <td>1.04 km</td>
+                  <td>54%</td>
+                  <td>36</td>
+                  <td>
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/ros1/stadtgarten_seq1.bag" class="button is-small is-link is-outlined">ROS1</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/tree/main/ros2/stadtgarten_seq1" class="button is-small is-link is-outlined">ROS2</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/euroc/stadtgarten_seq1_euroc.zip" class="button is-small is-link is-outlined">EuRoC</a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Stadtgarten Seq. 2</td>
-                  <td>10 min 36 s</td>
-                  <td>0.95 km</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                  <td>14 min 36 s</td>
+                  <td>0.46 km</td>
+                  <td>40%</td>
+                  <td>19</td>
+                  <td>
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/ros1/stadtgarten_seq2.bag" class="button is-small is-link is-outlined">ROS1</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/tree/main/ros2/stadtgarten_seq2" class="button is-small is-link is-outlined">ROS2</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/euroc/stadtgarten_seq2_euroc.zip" class="button is-small is-link is-outlined">EuRoC</a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Constr. Hall Seq. 1</td>
                   <td>12 min 21 s</td>
-                  <td>0.42 km</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                  <td>0.48 km</td>
+                  <td>25%</td>
+                  <td>16</td>
+                  <td>
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/ros1/construction_seq1.bag" class="button is-small is-link is-outlined">ROS1</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/tree/main/ros2/construction_seq1" class="button is-small is-link is-outlined">ROS2</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/euroc/construction_seq1_euroc.zip" class="button is-small is-link is-outlined">EuRoC</a>
+                  </td>
                 </tr>
                 <tr>
                   <td>Constr. Hall Seq. 2</td>
                   <td>9 min 59 s</td>
-                  <td>0.32 km</td>
-                  <td><a href="#" class="button is-small is-link is-outlined">ROS bag</a></td>
+                  <td>0.39 km</td>
+                  <td>23%</td>
+                  <td>16</td>
+                  <td>
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/ros1/construction_seq2.bag" class="button is-small is-link is-outlined">ROS1</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/tree/main/ros2/construction_seq2" class="button is-small is-link is-outlined">ROS2</a>&nbsp;
+                    <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset/resolve/main/euroc/construction_seq2_euroc.zip" class="button is-small is-link is-outlined">EuRoC</a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -524,6 +553,15 @@
         </div>
 
         <div class="publication-links" style="margin-top:10px;">
+          <span class="link-block">
+            <a href="https://huggingface.co/datasets/Willyzw/rtk-slam-dataset" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fas fa-database"></i>
+            </span>
+            <span>All Formats (HuggingFace)</span>
+          </a>
+        </span>
           <span class="link-block">
             <a href="https://github.com/Willyzw/rtk-slam-eval" target="_blank"
             class="external-link button is-normal is-rounded is-dark">
