@@ -221,29 +221,6 @@
 <!-- End abstract -->
 
 
-<!-- Key Insight -->
-<section class="section" style="margin-top: 0; padding-top: 20px; margin-bottom: 0; padding-bottom: 0;">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full_width">
-        <hr>
-        <h2 class="title is-3">Key Insight</h2>
-        <div class="content has-text-justified">
-          <div class="highlight-box">
-            <p>
-              <strong>The standard SE(3)-aligned ATE is unsuitable for evaluating RTK-SLAM.</strong>
-              A trajectory that is meters away from its true global position can still yield a near-zero SE(3)-aligned ATE if its internal geometry is consistent.
-              Our evaluation protocol directly compares estimated positions against geodetically surveyed control points — without any alignment — exposing global drift that standard benchmarks would hide.
-              The alignment gap can reach <strong>76%</strong>, meaning standard metrics can underestimate the true absolute error by up to a factor of 4.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- Dataset -->
 <section class="section" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
   <div class="container is-max-desktop">
@@ -251,6 +228,76 @@
       <div class="column is-full_width">
         <hr>
         <h2 class="title is-3">Dataset</h2>
+
+        <!-- Walkthrough -->
+        <h3 class="title is-4" style="text-align:left;">Data Walkthrough</h3>
+        <div class="content has-text-justified">
+          <p>
+            The videos below show recorded sensor data replayed at 4× speed with online FAST-LIO-SAM processing.
+            <strong>Top row:</strong> 3D local map view with accumulated point cloud and trajectory (left); IMU readings (right).
+            <strong>Bottom row:</strong> Global map view (left) — <span style="color:#e08000;">&#9733; stars</span>: surveyed checkpoints, <span style="color:#e03030;">&#9679; red points</span>: GNSS measurements, <span style="color:#3060e0;">&#9679; blue trajectory</span>: RTK-SLAM online estimate; GNSS status with RTK fix quality indicators (center); camera image (right).
+          </p>
+        </div>
+
+        <div class="tabs is-centered is-medium is-boxed" id="video-tabs" style="margin-bottom:16px;">
+          <ul>
+            <li class="is-active" data-target="video-sg1"><a><strong>Stadtgarten Seq. 1</strong></a></li>
+            <li data-target="video-sg2"><a><strong>Stadtgarten Seq. 2</strong></a></li>
+            <li data-target="video-ch1"><a><strong>Construction Hall Seq. 1</strong></a></li>
+            <li data-target="video-ch2"><a><strong>Construction Hall Seq. 2</strong></a></li>
+          </ul>
+        </div>
+        <style>
+          #video-tabs li.is-active a { background-color: #3273dc; color: #fff; border-color: #3273dc; }
+          #video-tabs li a { color: #3273dc; }
+          #video-tabs li:not(.is-active) a:hover { background-color: #f0f5ff; }
+        </style>
+
+        <div id="video-sg1" class="video-panel">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
+            <iframe src="https://www.youtube.com/embed/np9MM8pEtis"
+              style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <div id="video-sg2" class="video-panel" style="display:none;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
+            <iframe src="https://www.youtube.com/embed/OEfGtQbUU1g"
+              style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <div id="video-ch1" class="video-panel" style="display:none;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
+            <iframe src="https://www.youtube.com/embed/Ils51xextbI"
+              style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <div id="video-ch2" class="video-panel" style="display:none;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
+            <iframe src="https://www.youtube.com/embed/jhCb_sSij-0"
+              style="position:absolute; top:0; left:0; width:100%; height:100%;"
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <script>
+          document.querySelectorAll('#video-tabs li').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+              document.querySelectorAll('#video-tabs li').forEach(function(t) { t.classList.remove('is-active'); });
+              document.querySelectorAll('.video-panel').forEach(function(p) { p.style.display = 'none'; });
+              tab.classList.add('is-active');
+              document.getElementById(tab.dataset.target).style.display = 'block';
+            });
+          });
+        </script>
+
+        <br>
 
         <!-- Sensor platform -->
         <h3 class="title is-4" style="text-align:left;">Sensor Platform</h3>
@@ -372,6 +419,19 @@
       <div class="column is-full_width">
         <h2 class="title is-3">Evaluation</h2>
 
+        <!-- Key Insight -->
+        <h3 class="title is-4" style="text-align:left;">Key Insight</h3>
+        <div class="content has-text-justified">
+          <div class="highlight-box">
+            <p>
+              <strong>The standard SE(3)-aligned ATE is unsuitable for evaluating RTK-SLAM.</strong>
+              A trajectory that is meters away from its true global position can still yield a near-zero SE(3)-aligned ATE if its internal geometry is consistent.
+              Our evaluation protocol directly compares estimated positions against geodetically surveyed control points — without any alignment — exposing global drift that standard benchmarks would hide.
+              The alignment gap can reach <strong>76%</strong>, meaning standard metrics can underestimate the true absolute error by up to a factor of 4.
+            </p>
+          </div>
+        </div>
+
         <h3 class="title is-4" style="text-align:left;">Methods</h3>
         <div class="content has-text-justified">
           <p>We benchmark three RTK-SLAM configurations:</p>
@@ -382,31 +442,6 @@
             <li><strong>Standalone RTK</strong> — Direct RTK positioning without any odometry integration.</li>
           </ul>
         </div>
-
-        <h3 class="title is-4" style="text-align:left;">Trajectory Comparisons</h3>
-        <div class="content has-text-justified">
-          <p>
-            Trajectories for all four sequences overlaid on satellite imagery, with GNSS-denied and GNSS-degraded zones annotated.
-          </p>
-        </div>
-        <img src="static/images/traj_all.jpg" class="center" alt="Trajectory comparisons for all four sequences" style="width:100%;"/>
-        <p class="has-text-centered" style="font-size:0.85em; color:#666; margin-top:6px;">
-          FAST-LIO-SAM offline (dark blue), online (light blue); OKVIS2-X(lvig) offline (dark green), online (light green); RTK standalone (red). Yellow stars: geodetic control points.
-        </p>
-        <br>
-
-        <h3 class="title is-4" style="text-align:left;">Drift Under GNSS Outage</h3>
-        <img src="static/images/rtk_correlation.jpg" class="center" alt="Drift rate as function of GNSS outage time and distance" style="max-width:700px;width:100%;"/>
-        <div class="content has-text-justified">
-          <br>
-          <p>
-            Positioning error (log scale) as a function of time elapsed and distance traveled to the nearest RTK fix, aggregated over all checkpoint measurements. Because offline optimization propagates corrections both forward and backward, the x-axis is distance to the nearest RTK fix rather than only since the last fix. LiDAR-aided methods show low drift rates:
-            <strong>9.2&nbsp;cm/min</strong> (0.25% of path) for FAST-LIO-SAM and <strong>8.0&nbsp;cm/min</strong> (0.22%) for OKVIS2-X(lvig).
-            Standalone RTK degrades rapidly once signal quality deteriorates.
-          </p>
-        </div>
-
-        <br>
 
         <h3 class="title is-4" style="text-align:left;">Quantitative Results</h3>
         <div class="content has-text-justified">
@@ -465,69 +500,30 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-    <hr>
-  </div>
-</section>
 
+        <br>
 
-<!-- Demo Videos -->
-<section class="section" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full_width">
-        <h2 class="title is-3">Demo Videos</h2>
+        <h3 class="title is-4" style="text-align:left;">Trajectory Comparisons</h3>
         <div class="content has-text-justified">
           <p>
-            Online replay of FAST-LIO-SAM processing for each sequence.
-            <strong>Top row:</strong> 3D local map view with accumulated point cloud and trajectory (left); IMU readings (right).
-            <strong>Bottom row:</strong> Global map view with global trajectory, checkpoints, and GNSS measurements showing RTK-SLAM / checkpoint consistency (left); GNSS status including RTK fix and quality indicators (center); camera image (right).
+            Trajectories for all four sequences overlaid on satellite imagery, with GNSS-denied and GNSS-degraded zones annotated.
           </p>
         </div>
+        <img src="static/images/traj_all.jpg" class="center" alt="Trajectory comparisons for all four sequences" style="width:100%;"/>
+        <br>
 
-        <div class="columns is-multiline">
-          <!-- Stadtgarten Seq. 1 -->
-          <div class="column is-half">
-            <p class="has-text-centered" style="font-weight:600; margin-bottom:6px;">Stadtgarten Seq. 1</p>
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
-              <iframe src="https://www.youtube.com/embed/np9MM8pEtis"
-                style="position:absolute; top:0; left:0; width:100%; height:100%;"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-          <!-- Stadtgarten Seq. 2 -->
-          <div class="column is-half">
-            <p class="has-text-centered" style="font-weight:600; margin-bottom:6px;">Stadtgarten Seq. 2</p>
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
-              <iframe src="https://www.youtube.com/embed/OEfGtQbUU1g"
-                style="position:absolute; top:0; left:0; width:100%; height:100%;"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-          <!-- Constr. Hall Seq. 1 -->
-          <div class="column is-half">
-            <p class="has-text-centered" style="font-weight:600; margin-bottom:6px;">Construction Hall Seq. 1</p>
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
-              <iframe src="https://www.youtube.com/embed/Ils51xextbI"
-                style="position:absolute; top:0; left:0; width:100%; height:100%;"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-          <!-- Constr. Hall Seq. 2 -->
-          <div class="column is-half">
-            <p class="has-text-centered" style="font-weight:600; margin-bottom:6px;">Construction Hall Seq. 2</p>
-            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px;">
-              <iframe src="https://www.youtube.com/embed/jhCb_sSij-0"
-                style="position:absolute; top:0; left:0; width:100%; height:100%;"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-          </div>
+        <h3 class="title is-4" style="text-align:left;">Drift Under GNSS Outage</h3>
+        <img src="static/images/rtk_correlation.jpg" class="center" alt="Drift rate as function of GNSS outage time and distance" style="max-width:700px;width:100%;"/>
+        <div class="content has-text-justified">
+          <br>
+          <p>
+            Positioning error (log scale) as a function of time elapsed and distance traveled to the nearest RTK fix, aggregated over all checkpoint measurements. Because offline optimization propagates corrections both forward and backward, the x-axis is distance to the nearest RTK fix rather than only since the last fix. LiDAR-aided methods show low drift rates:
+            <strong>9.2&nbsp;cm/min</strong> (0.25% of path) for FAST-LIO-SAM and <strong>8.0&nbsp;cm/min</strong> (0.22%) for OKVIS2-X(lvig).
+            Standalone RTK degrades rapidly once signal quality deteriorates.
+          </p>
         </div>
+      </div>
+    </div>
       </div>
     </div>
     <hr>
@@ -544,14 +540,10 @@
         <div class="content has-text-justified">
           <p>
             The dataset, calibration files, and evaluation scripts are publicly available.
-            Each sequence is provided as a ROS bag containing synchronized LiDAR, camera, IMU, and RTK data.
-            Calibration files, ground truth control point coordinates, and evaluation code are also provided.
+            Each sequence contains synchronized LiDAR, camera, IMU, and RTK data.
+            All sequences are available in three formats: <strong>ROS1</strong> (.bag), <strong>ROS2</strong> (.db3), and <strong>EuRoC</strong> (extended format compatible with OKVIS2-X).
           </p>
-        </div>
-
-        <div class="content has-text-justified">
-          <p>All sequences are available in three formats: <strong>ROS1</strong> (.bag), <strong>ROS2</strong> (.db3), and <strong>EuRoC</strong> (extended format compatible with OKVIS2-X).</p>
-          <p><strong>Note on camera timestamps:</strong> The camera has a hardware trigger delay of −20.6&nbsp;ms relative to the IMU clock (estimated by Kalibr). This offset is already compensated in all released formats — camera timestamps reflect the corrected capture time and no additional time shift is needed.</p>
+          <p><strong>Note on camera timestamps:</strong> The camera has a hardware trigger delay of −20.6&nbsp;ms relative to the IMU clock (estimated by Kalibr). This offset is already compensated in all released formats and no additional time shift is needed.</p>
         </div>
 
         <div class="columns is-centered">
